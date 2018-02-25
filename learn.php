@@ -32,7 +32,7 @@
         }  
 }?>
     <?php
-                //квадраты и кубы первых $number чисел
+        //квадраты и кубы первых $number чисел
         function squareCube($number) {
         echo "А вот квадраты и кубы первых $number чисел<br>";
         echo "<ul>";
@@ -42,6 +42,7 @@
         }
         echo "</ul>";
         }
+    
         //сумма чисел в строке
         function sumIntInString($string){
              $sum = 0;//strlen  - Длина строки
@@ -59,7 +60,53 @@
                     else continue;
                 }
             return $counter;
-        };    
+        };
+    
+    $good = ["a", "b", "c"];
+    $bad = ["d", "e"];
+    $ugly = ["f"];
+    //слияние списоков. выведет a,b,c. Потому что при слиянии массивов с одинаковыми индексами
+    // в результирующем массиве будет элемент,индекс которого был в первом массиве
+    $all = $good + $bad + $ugly;
+    //print_r() выводит информацию о переменной в удобочитаемом виде
+    print_r($all);
+    //многомерный массив
+    $dosier = [
+        ["name" => "Andrew", "born" => 1998],
+        ["name" => "Ivan", "born" => 1999]
+    ];
+    //косвенный перебор элементов.{} нужны для того, чтобы не было ошибки
+    function sortOutInderectly($array) {
+    for($i = 0; $i < count($array); $i++) {
+        echo "Имя {$array[$i]['name']}";
+        echo "Родился {$array[$i]['born']}<br>";
+    }
+    }
+    //ассоциативный массив
+    $color = [
+        "red" => 1,
+        "green" => 2,
+        "blue" => 3,
+    ];
+        //косвенный перебор ассоциативного массива.reset возвращает значение первого элемента массива.
+        //key возвращает ключ. next - значение элемента,следущего за текущим
+    function sortOutInderectlyAss($array) {
+        for(reset($array);($k = key($array)); next($array)) {
+            echo "Цвет $k имеет код {$array[$k]} <br>";
+        }
+    }
+        //перебор массива с конца
+    function sortOutInderectlyBackward($array) {
+        for(end($array);($k = key($array)); prev($array)) {
+            echo "Цвет $k имеет код {$array[$k]} <br>";
+        }
+    }
+        //прямой перебор ассоциативноо массива
+    function sortOutDerectly($array) {
+        foreach($array as $k => $v) {
+            echo"Цвет $k имеет код $v <br>";
+        }
+    }
     ?>  
         
     </body>
